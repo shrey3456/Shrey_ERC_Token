@@ -1,0 +1,19 @@
+{
+    "name": "shrey-token-sale",
+    "version": "1.0.0",
+    "description": "Shrey Token Sale ICO",
+    "main": "truffle-config.js",
+    "directories": {
+      "test": "test"
+    },
+    "scripts": {
+      "dev": "lite-server"
+    },
+    "author": "Shrey",
+    "license": "ISC",
+    "devDependencies": {
+      "lite-server": "^2.3.0",
+       "web3": "^1.5.0",
+      "@truffle/contract": "^4.3.19"
+    }
+  }
