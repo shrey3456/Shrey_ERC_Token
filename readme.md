@@ -85,9 +85,6 @@ The smart contract is deployed with the following parameters:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🔗 Links
 
@@ -98,8 +95,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👤 Author
 
 Your Name
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
+- GitHub: [@shrey3456](https://github.com/yourusername)
+- LinkedIn: [Shrey Patel](https://linkedin.com/in/yourprofile)
 
 ## 🙏 Acknowledgments
 
