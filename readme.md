@@ -95,8 +95,8 @@ The smart contract is deployed with the following parameters:
 ## 👤 Author
 
 Your Name
-- GitHub: [@shrey3456](https://github.com/yourusername)
-- LinkedIn: [Shrey Patel](https://linkedin.com/in/yourprofile)
+- GitHub: [@shrey3456](https://github.com/shrey3456)
+- LinkedIn: [Shrey Patel](https://www.linkedin.com/in/shrey-patel-7168a724b/)
 
 ## 🙏 Acknowledgments
 
