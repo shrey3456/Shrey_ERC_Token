@@ -5,22 +5,247 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHrey Token Sale</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            /* Changed to cyberpunk gradient background */
+            background: linear-gradient(135deg, #000428, #004e92);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            perspective: 1000px;
+            animation: fadeInScale 0.8s ease-out;
+        }
+        
+        .container {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 50px;
+            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
+            transform-style: preserve-3d;
+            animation: fadeInScale 1.2s ease-out;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        h1 {
+            /* Changed to neon cyan color */
+            color: #00fff2;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 255, 242, 0.5);
+            animation: slideInFromTop 1s ease-out, glow 2s ease-in-out infinite;
+            transform-style: preserve-3d;
+            white-space: nowrap;
+            margin: 0 auto;
+            opacity: 1;
+            width: fit-content;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            /* Changed to cyber gradient */
+            background: linear-gradient(45deg, #00fff2, #00ff95);
+            border: none;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 255, 242, 0.4);
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg);
+            transition: all 0.3s;
+            opacity: 0;
+        }
+
+        .btn-primary:hover::after {
+            opacity: 1;
+            transform: rotate(45deg) translate(-50%, -50%);
+        }
+
+        .progress {
+            height: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transform: translateZ(20px);
+            animation: slideInFromLeft 1.8s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .progress-bar {
+            /* Changed to cyber gradient */
+            background: linear-gradient(45deg, #00fff2, #00ff95);
+            animation: progressPulse 2s ease-in-out infinite;
+        }
+
+        .input-group {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 5px;
+            transform: translateZ(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: slideInFromLeft 1.5s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 242, 0.3);
+        }
+
+        #accountAddress {
+            font-family: monospace;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 5px;
+            transform: translateZ(5px);
+            animation: fadeInScale 2s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(2deg); }
+            50% { transform: translateY(-10px) rotateX(-2deg); }
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(0, 255, 242, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(0, 255, 242, 0.7); }
+        }
+
+        @keyframes rotateTitle {
+            0%, 100% { transform: rotateX(0deg); }
+            50% { transform: rotateX(5deg); }
+        }
+
+        @keyframes progressPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes slideInFromTop {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInScale {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes slideInFromLeft {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .fas {
+            animation: iconFloat 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Token balance and price entrance animation */
+        .token-price, .shrey-balance {
+            animation: fadeInScale 1.5s ease-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        /* Update loader spinner color */
+        .fa-spinner {
+            color: #00fff2;
+            animation: fadeInScale 1s ease-out infinite;
+        }
+
+        /* Update typing animation styles */
+        .typing-animation {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #00fff2;
+            width: 0;
+            animation: 
+                typing 3.5s steps(30) 1s forwards,
+                blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 350px } /* Fixed width for title */
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00fff2 }
+        }
+
+        .title-wrapper {
+            text-align: center;
+            padding: 20px 0;
+            perspective: 1000px;
+            min-height: 60px; /* Added to prevent layout shift */
+        }
+
+        .fa-coins {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out 3.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
     <div class="container" style="width: 650px;">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="text-center">SHREY TOKEN ICO SALE</h1>
+                <div class="title-wrapper">
+                    <h1>
+                        <i class="fas fa-coins"></i>
+                        <span class="typing-animation">SHREY TOKEN ICO SALE</span>
+                    </h1>
+                </div>
                 <hr/>
                 <br/>
             </div>
             <div id="loader">
-                <p class="text-center">Loading...</p>
+                <p class="text-center"><i class="fas fa-spinner fa-spin"></i> Loading...</p>
             </div>
             <div id="content" class="text-center" style="display: none;">
                 <p>
-                    Introducing "SHrey Token" (SHREY)!<br/>
-                    Token price is <span class="token-price"></span> Ether. You currently have <span class="shrey-balance"></span> SHREY.
+                    <i class="fas fa-star"></i> Introducing "SHrey Token" (SHREY)! <i class="fas fa-star"></i><br/>
+                    <i class="fas fa-tag"></i> Token price is <span class="token-price"></span> Ether<br/>
+                    <i class="fas fa-wallet"></i> You currently have <span class="shrey-balance"></span> SHREY
                 </p>
                 <br/>
                 <form onSubmit="App.buyTokens(); return false;" role="form">
